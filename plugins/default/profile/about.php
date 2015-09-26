@@ -20,7 +20,7 @@
   </tr>
   <tr>
     <th scope="row"><?php echo ossn_print('gender');?></th>
-    <td><?php echo $params['user']->gender;?></td>
+    <td><?php echo ossn_print($params['user']->gender);?></td>
   </tr>  
   <tr>
     <th scope="row"><?php echo ossn_print('age');?></th>
