@@ -56,6 +56,8 @@ function profile_about_user_page($hook, $type, $return, $params) {
  * @return integer
  */
 function about_user_age($birthday = '') {
+		//you can find your area timezone format here: http://php.net/manual/en/timezones.php
+		date_default_timezone_set("Europe/Berlin");
 		if(empty($birthday)) {
 				return false;
 		}
