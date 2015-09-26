@@ -61,14 +61,16 @@ function about_user_age($birthday = '') {
 		if(empty($birthday)) {
 				return false;
 		}
-		list($day, $month, $year) = explode("/", $birthday);
-		$year_diff  = date("Y") - $year;
-		$month_diff = date("m") - $month;
-		$day_diff   = date("d") - $day;
-		if($day_diff < 0 && $month_diff == 0)
-				$year_diff--;
-		if($day_diff < 0 && $month_diff < 0)
-				$year_diff--;
-		return (int) $year_diff;
+		$birthday = str_replace('/', '-', $birthday);
+		$dob      = strtotime($birthday);
+		if($dob === false) {
+				return false;
+		}
+		$age = 0;
+		
+		while(time() > $dob = strtotime('+1 year', $dob)) {
+				++$age;
+		}
+		return $age;
 }
 ossn_register_callback('ossn', 'init', 'about_user');
